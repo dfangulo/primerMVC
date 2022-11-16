@@ -9,6 +9,10 @@ class Nuevo extends Controller{
        // echo "<p>Nuevo controlador Main</p>";
     }
 
+    function registrarNuevoAlumno(){
+        echo "Alumno creado";
+        $this->model->insert();
+    }
 }
 
 ?>
