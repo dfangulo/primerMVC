@@ -14,6 +14,7 @@
             <li><a href="<?php echo constant('URL') ?>nuevo">Nuevo</a></li>
             <li><a href="<?php echo constant('URL') ?>consulta">Consulta</a></li>
             <li><a href="<?php echo constant('URL') ?>ayuda">Ayuda</a></li>
+            <li><a href="<?php echo constant('URL') ?>cuadros">Cuadros</a></li>
             <!---<li><a href=""></a></li>-->
         </ul>
     </div>
