@@ -7,6 +7,12 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #eee;
 }
+h1 {
+    margin: 10px 0;
+}
+form input{
+    margin: 3px 0;
+}
 
 #header {
     background: black;
@@ -26,7 +32,7 @@ body {
 
 #footer{
     width: 100%;
-    position:absolute;
+    position:fixed;
     bottom:0;
     background-color: #ccc;
     padding: 20px 0;

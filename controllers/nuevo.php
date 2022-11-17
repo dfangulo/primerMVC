@@ -5,13 +5,19 @@ class Nuevo extends Controller{
     {
         parent::__construct();
         $this->view->mensaje = "Mensaje desde el controlador";
-        $this->view->render('nuevo/index');
+
        // echo "<p>Nuevo controlador Main</p>";
+    }
+    function render (){
+        $this->view->render('nuevo/index');
     }
 
     function registrarNuevoAlumno(){
-        echo "Alumno creado";
-        $this->model->insert();
+        //$matricula  = $_POST['matricula'];
+        $nombre     = $_POST['nombre'];
+        $apellido   = $_POST['apellido'];
+        //echo "Alumno creado";
+        $this->model->insert(['nombre' => $nombre,'apellido' => $apellido]);
     }
 }
 
