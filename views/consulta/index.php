@@ -23,8 +23,8 @@
                     <td><?php echo $alumno->matricula?></td>
                     <td><?php echo $alumno->nombre?></td>
                     <td><?php echo $alumno->apellido?></td>
-                    <td><a href="#">Editar</a></td>
-                    <td><a href="#">Eliminar</a></td>
+                    <td><a href="<?php echo constant('URL'). 'consulta/verAlumno/'. $alumno->matricula; ?>">Editar</a></td>
+                    <td><a href="<?php echo constant('URL'). 'consulta/eliminarAlumno/'. $alumno->matricula; ?>">Eliminar</a></td>
                 </tr>
         <?php   } ?>
             </tbody>

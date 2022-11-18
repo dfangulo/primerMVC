@@ -24,18 +24,32 @@ class App {
          //inicializar el controlador
          $controller = new $url[0];
          $controller->loadModel($url[0]);
+         // numero de elementos del arreglo
+         $nparam = sizeof($url);
 
-         // si hay un método que se quiere cargar
-         if(isset($url[1])){
-            $controller->{$url[1]}();
+         if($nparam > 1){
+               if($nparam > 2){
+                  $param = [];
+                  for($i = 2; $i < $nparam; $i++){
+                     array_push($param, $url[$i]);
+                  }
+                  $controller->{$url[1]}($param);
+                  
+               }else{
+                  $controller->{$url[1]}();
+               }
          }else{
             $controller->render();
+            //var_dump($url);
          }
+
       } else {
          $archivoController = 'controllers/err.php';
          require_once $archivoController;
             $controller = new Err();
       }
+
+      // si hay un parametro
    }
 
 }

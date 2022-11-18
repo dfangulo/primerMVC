@@ -4,7 +4,7 @@ class Nuevo extends Controller{
     function __construct()
     {
         parent::__construct();
-        $this->view->mensaje = "Mensaje desde el controlador";
+
 
        // echo "<p>Nuevo controlador Main</p>";
     }
@@ -18,6 +18,8 @@ class Nuevo extends Controller{
         $apellido   = $_POST['apellido'];
         //echo "Alumno creado";
         $this->model->insert(['nombre' => $nombre,'apellido' => $apellido]);
+        $this->view->mensaje = "Alumno: $nombre $apellido - Agregado correctamente!";
+        $this->render();
     }
 }
 
