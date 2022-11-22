@@ -53,12 +53,15 @@ class Consulta extends Controller{
 
         if($this->model->delete($matricula)){
             //Borrar Alumno
-            $this->view->mensaje = "Alumno eliminado correctamente";
+            // $this->view->mensaje = "Alumno eliminado correctamente";
+            $mensaje = "Alumno eliminado correctamente";
         }else{
             // mensaje de error
-            $this->view->mensaje = "No se pudo eliminar el Alumno";
+            // $this->view->mensaje = "No se pudo eliminar el Alumno";
+            $mensaje = "No se pudo eliminar el Alumno";
         }
-        $this->render();
+        //$this->render();
+        echo $mensaje;
     }
 }
 
