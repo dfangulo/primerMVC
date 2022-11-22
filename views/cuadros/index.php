@@ -1,5 +1,4 @@
 <?php require 'views/header.php' ?>
-
         <div id="main">
             <h1 class="color-2">Bienvenido al cuadros</h1>
         </div>
@@ -25,5 +24,4 @@
         <div class="cuadro color-bg-19"></div>
         <div class="cuadro color-bg-20"></div>
         </div>
-
 <?php require 'views/footer.php' ?>
