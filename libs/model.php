@@ -6,5 +6,3 @@
             $this->db=new Database();
         }
     }
-
-?>

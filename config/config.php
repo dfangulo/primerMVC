@@ -1,5 +1,5 @@
 <?php 
-    define('URL','http://curso-php.com/mvc/');
+    define('URL','http://oa3.lanix.com/');
     define('HOST', '192.168.122.218');
     define('USERNAME', 'oa3db');
     define('PASSWORD', 'Lanix2012$');

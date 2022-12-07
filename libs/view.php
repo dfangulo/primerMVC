@@ -11,5 +11,3 @@
             require 'views/' . $nombre . '.php';
         }
     }
-
-?>
