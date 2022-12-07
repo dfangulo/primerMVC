@@ -1,26 +1,27 @@
-<?php 
-class Nuevo extends Controller{
+<?php
+class Nuevo extends Controller
+{
 
     function __construct()
     {
         parent::__construct();
 
 
-       // echo "<p>Nuevo controlador Main</p>";
+        // echo "<p>Nuevo controlador Main</p>";
     }
-    function render (){
+    function render()
+    {
         $this->view->render('nuevo/index');
     }
 
-    function registrarNuevoAlumno(){
+    function registrarNuevoAlumno()
+    {
         //$matricula  = $_POST['matricula'];
         $nombre     = $_POST['nombre'];
         $apellido   = $_POST['apellido'];
         //echo "Alumno creado";
-        $this->model->insert(['nombre' => $nombre,'apellido' => $apellido]);
+        $this->model->insert(['nombre' => $nombre, 'apellido' => $apellido]);
         $this->view->mensaje = "Alumno: $nombre $apellido - Agregado correctamente!";
         $this->render();
     }
 }
-
-?>

@@ -1,5 +1,6 @@
 <?php
-class Pbr  extends Controller{
+class Pbr  extends Controller
+{
     private $documentxml;
     private $date;
     private $arrSeries;
@@ -16,51 +17,53 @@ class Pbr  extends Controller{
         libxml_clear_errors();
     }
 
-    
-    function render (){
+
+    function render()
+    {
         $this->view->render('pbr/index');
     }
 
-    public function crearXML() {
+    public function crearXML()
+    {
         $this->documentxml = new DOMDocument('1.0', 'utf-8');
         $this->documentxml->formatOutput = true;
         $PbrExportContent   = $this->documentxml->createElement("PbrExportContent");
-          $PbrExportContent->setAttribute("xmlns:i","http://www.w3.org/2001/XMLSchema-instance");
-          $PbrExportContent->setAttribute("xmlns","http://schemas.ms.it.oem/digitaldistribution/2010/10");
-          $PbrExportContent     = $this->documentxml->appendChild($PbrExportContent);
-            $CloudOASiteId      = $this->documentxml->createElement("CloudOASiteId","573");
-            $CloudOASiteId      = $PbrExportContent->appendChild($CloudOASiteId);
-            $CloudOABusinessId  = $this->documentxml->createElement("CloudOABusinessId","605");
-            $CloudOABusinessId  = $PbrExportContent->appendChild($CloudOABusinessId);
-            $CloudOAUserId      = $this->documentxml->createElement("CloudOAUserId","3311");
-            $CloudOAUserId      = $PbrExportContent->appendChild($CloudOAUserId);
-            $CreatedDateUTC     = $this->documentxml->createElement("CreatedDateUTC",$this->date);
-            $CreatedDateUTC     = $PbrExportContent->appendChild($CreatedDateUTC);
-            $Content            = $this->documentxml->createElement("Content");
-              $Content->setAttribute("i:type","ProductBindingReportRequest");
-              $Content            = $PbrExportContent->appendChild($Content);
-              $CustomerBindingUniqueID  = $this->documentxml->createElement("CustomerBindingUniqueID",$this->guid);
-              $CustomerBindingUniqueID  = $Content->appendChild($CustomerBindingUniqueID);
-              $SoldToCustomerID         = $this->documentxml->createElement("SoldToCustomerID","R231");
-              $SoldToCustomerID         = $Content->appendChild($SoldToCustomerID);
-              $ReceivedFromCustomerID   = $this->documentxml->createElement("ReceivedFromCustomerID","R231");
-              $ReceivedFromCustomerID   = $Content->appendChild($ReceivedFromCustomerID);
-              $TotalLineItems           = $this->documentxml->createElement("TotalLineItems",$this->TotalLineItems);
-              $TotalLineItems           = $Content->appendChild($TotalLineItems);
-              $ProductBindings          = $this->documentxml->createElement("ProductBindings");
-              $ProductBindings          = $Content->appendChild($ProductBindings);
-                foreach( $this->arrSeries as $row){
-                  $ProductBinding         = $this->documentxml->createElement("ProductBinding");
-                  $ProductBinding         = $ProductBindings->appendChild($ProductBinding);
-                    $WindowsProductKeyID  = $this->documentxml->createElement("WindowsProductKeyID", trim($row[0]));
-                    $WindowsProductKeyID  = $ProductBinding->appendChild($WindowsProductKeyID);
-                    $ServiceProductKeyID  = $this->documentxml->createElement("ServiceProductKeyID", trim($row[1]));
-                    $ServiceProductKeyID  =$ProductBinding->appendChild($ServiceProductKeyID);
-                }
+        $PbrExportContent->setAttribute("xmlns:i", "http://www.w3.org/2001/XMLSchema-instance");
+        $PbrExportContent->setAttribute("xmlns", "http://schemas.ms.it.oem/digitaldistribution/2010/10");
+        $PbrExportContent     = $this->documentxml->appendChild($PbrExportContent);
+        $CloudOASiteId      = $this->documentxml->createElement("CloudOASiteId", "573");
+        $CloudOASiteId      = $PbrExportContent->appendChild($CloudOASiteId);
+        $CloudOABusinessId  = $this->documentxml->createElement("CloudOABusinessId", "605");
+        $CloudOABusinessId  = $PbrExportContent->appendChild($CloudOABusinessId);
+        $CloudOAUserId      = $this->documentxml->createElement("CloudOAUserId", "3311");
+        $CloudOAUserId      = $PbrExportContent->appendChild($CloudOAUserId);
+        $CreatedDateUTC     = $this->documentxml->createElement("CreatedDateUTC", $this->date);
+        $CreatedDateUTC     = $PbrExportContent->appendChild($CreatedDateUTC);
+        $Content            = $this->documentxml->createElement("Content");
+        $Content->setAttribute("i:type", "ProductBindingReportRequest");
+        $Content            = $PbrExportContent->appendChild($Content);
+        $CustomerBindingUniqueID  = $this->documentxml->createElement("CustomerBindingUniqueID", $this->guid);
+        $CustomerBindingUniqueID  = $Content->appendChild($CustomerBindingUniqueID);
+        $SoldToCustomerID         = $this->documentxml->createElement("SoldToCustomerID", "R231");
+        $SoldToCustomerID         = $Content->appendChild($SoldToCustomerID);
+        $ReceivedFromCustomerID   = $this->documentxml->createElement("ReceivedFromCustomerID", "R231");
+        $ReceivedFromCustomerID   = $Content->appendChild($ReceivedFromCustomerID);
+        $TotalLineItems           = $this->documentxml->createElement("TotalLineItems", $this->TotalLineItems);
+        $TotalLineItems           = $Content->appendChild($TotalLineItems);
+        $ProductBindings          = $this->documentxml->createElement("ProductBindings");
+        $ProductBindings          = $Content->appendChild($ProductBindings);
+        foreach ($this->arrSeries as $row) {
+            $ProductBinding         = $this->documentxml->createElement("ProductBinding");
+            $ProductBinding         = $ProductBindings->appendChild($ProductBinding);
+            $WindowsProductKeyID  = $this->documentxml->createElement("WindowsProductKeyID", trim($row[0]));
+            $WindowsProductKeyID  = $ProductBinding->appendChild($WindowsProductKeyID);
+            $ServiceProductKeyID  = $this->documentxml->createElement("ServiceProductKeyID", trim($row[1]));
+            $ServiceProductKeyID  = $ProductBinding->appendChild($ServiceProductKeyID);
+        }
         return $this->documentxml;
     }
 
-    private function getTotalLineItems():int
+    private function getTotalLineItems(): int
     {
         $this->TotalLineItems = count($this->arrSeries);
         return $this->TotalLineItems;

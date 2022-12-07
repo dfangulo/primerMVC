@@ -1,5 +1,6 @@
 <?php 
-class Cuadros extends Controller{
+class Cuadros extends Controller
+{
 
     function __construct()
     {
@@ -12,5 +13,3 @@ class Cuadros extends Controller{
     }
 
 }
-
-?>

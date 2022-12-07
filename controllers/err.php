@@ -1,6 +1,7 @@
-<?php 
+<?php
 
-class Err extends Controller{
+class Err extends Controller
+{
 
     function __construct()
     {
@@ -10,10 +11,8 @@ class Err extends Controller{
 
         //echo "<p>No se encuentra el recurso</p>";
     }
-    function render(){
+    function render()
+    {
         $this->view->render('err/index');
     }
-
 }
-
-?>

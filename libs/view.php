@@ -1,13 +1,15 @@
 <?php
 
-    class View{
+class View
+{
 
-        function __construct()
-        {
-           // echo "<p>Vista base</p>";
-        }
-
-        function render($nombre){
-            require 'views/' . $nombre . '.php';
-        }
+    function __construct()
+    {
+        // echo "<p>Vista base</p>";
     }
+
+    function render($nombre)
+    {
+        require 'views/' . $nombre . '.php';
+    }
+}

@@ -1,18 +1,22 @@
-<?php 
-class Consulta extends Controller{
-
+<?php
+class Consulta extends Controller
+{
     function __construct()
     {
         parent::__construct();
         $this->view->alumnos = [];
-       // echo "<p>Nuevo controlador Main</p>";
+        // echo "<p>Nuevo controlador Main</p>";
     }
-    function render (){
+
+    function render()
+    {
         $alumnos =  $this->model->get();
         $this->view->alumnos = $alumnos;
         $this->view->render('consulta/index');
     }
-    function verAlumno($param = null) {
+
+    function verAlumno($param = null)
+    {
         $idAlumno = $param[0];
         $alumno = $this->model->getById($idAlumno);
 
@@ -21,10 +25,10 @@ class Consulta extends Controller{
         $this->view->alumno = $alumno;
         $this->view->mensaje = "";
         $this->view->render('consulta/detalle');
-        
     }
 
-    function actualizarAlumno($param = null) {
+    function actualizarAlumno($param = null)
+    {
         session_start();
         $matricula  = $_SESSION['id_verAlumno'];
         $nombre     = $_POST['nombre'];
@@ -32,7 +36,7 @@ class Consulta extends Controller{
 
         unset($_SESSION['id_verAlumno']);
 
-        if($this->model->update(['matricula' => $matricula, 'nombre' => $nombre, 'apellido' => $apellido])){
+        if ($this->model->update(['matricula' => $matricula, 'nombre' => $nombre, 'apellido' => $apellido])) {
             //Actualizar alumno
             $alumno = new Alumno();
             $alumno->matricula  = $matricula;
@@ -41,21 +45,22 @@ class Consulta extends Controller{
 
             $this->view->alumno = $alumno;
             $this->view->mensaje = "Alumno - $nombre - actualizado correctamente";
-        }else{
+        } else {
             // mensaje de error
             $this->view->mensaje = "No se pudo actualizar el Alumno";
         }
         $this->view->render('consulta/detalle');
     }
 
-    function eliminarAlumno($param = null) {
+    function eliminarAlumno($param = null)
+    {
         $matricula = $param[0];
 
-        if($this->model->delete($matricula)){
+        if ($this->model->delete($matricula)) {
             //Borrar Alumno
             // $this->view->mensaje = "Alumno eliminado correctamente";
             $mensaje = "Alumno eliminado correctamente";
-        }else{
+        } else {
             // mensaje de error
             // $this->view->mensaje = "No se pudo eliminar el Alumno";
             $mensaje = "No se pudo eliminar el Alumno";
@@ -64,5 +69,3 @@ class Consulta extends Controller{
         echo $mensaje;
     }
 }
-
-?>
