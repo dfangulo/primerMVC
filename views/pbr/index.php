@@ -35,7 +35,7 @@
                         echo '<label for="nombre-archivo" class="sr-only">Nombre Archivo: </label>
                       <input type="text" class="form-control"  name="nombre-archivo" id="nombre-archivo" placeholder = "ejemplo: file.xml" readonly>
                       </div>
-                      <button class="btn btn-dark mb-2 col-3" disabled>Descargar</button>';
+                      <button class="btn btn-dark mb-2 col-3" id="guardar" disabled>Descargar</button>';
                     };
                     ?>
                 </div>
